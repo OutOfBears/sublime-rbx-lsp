@@ -1,23 +1,23 @@
 {
+    // possible values: en-US, zh-CN
+    "locale": "en-US",
+
     // The startup command for this language server
     "command": [
         "${storage_path}/sublime-rbx-lsp/bin/${bin_platform}/lua-language-server",
         "-E",
+        "-e",
+        "LANG=\"${locale}\"",
         "${storage_path}/sublime-rbx-lsp/main.lua",
         "--develop=${develop}",
         "--dbgport=${debuggerPort}",
         "--dbgwait=${debuggerWait}"
     ],
 
-    // The server version to download in $CACHE/Package Storage
-    "server_version": "1.4.0",
-
     // Debugging mode
     "develop": false,
     "debug_port": 11412,
     "debug_wait": false,
-
-
 
     // Disable the trigger characters, because there's too many of them. The
     // default Lua syntax is capable enough to best decide when to trigger
@@ -41,38 +41,35 @@
 
         // Color mode.
         // possible values: Grammar, Semantic
-        "Lua.color.mode": "Semantic",
+        "robloxLsp.color.mode": "Semantic",
+
         // Lua completion, misc
-        "lua.completion.callParenthesess": false,
-        "lua.completion.deprecatedMembers": false,
-        "lua.completion.endAutocompletion": false,
-        // When the input looks like a file name, automatically `require` this file.
-        "Lua.completion.autoRequire": true,
-        // Shows function call snippets.
-        // possible values: Disable, Both, Replace
-        "Lua.completion.callSnippet": "Replace",
+        "robloxLsp.completion.callParenthesess": false,
+        "robloxLsp.completion.deprecatedMembers": false,
+        "robloxLsp.completion.endAutocompletion": false,
         // Previewing the relevant code snippet of the suggestion may help you understand the usage
         // of the suggestion. The number set indicates the number of intercepted lines in the code
         // fragment. If it is set to `0`, this feature can be disabled.
-        "Lua.completion.displayContext": 0,
+        "robloxLsp.completion.displayContext": 0,
         // Enable completion.
-        "Lua.completion.enable": true,
+        "robloxLsp.completion.enable": true,
         // Shows keyword syntax snippets.
         // possible values: Disable, Both, Replace
-        "Lua.completion.keywordSnippet": "Replace",
+        "robloxLsp.completion.keywordSnippet": "Replace",
         // Display parameters in completion list. When the function has multiple definitions, they
         // will be displayed separately.
-        "Lua.completion.showParams": true,
+        "robloxLsp.completion.showParams": true,
         // Shows words within the workspace.
-        "Lua.completion.workspaceWord": true,
+        "robloxLsp.completion.workspaceWord": true,
+
         // Disabled diagnostic (Use code in hover brackets).
-        "Lua.diagnostics.disable": [],
+        "robloxLsp.diagnostics.disable": [],
         // Enable diagnostics.
-        "Lua.diagnostics.enable": true,
+        "robloxLsp.diagnostics.enable": true,
         // Defined global variables.
-        "Lua.diagnostics.globals": [],
+        "robloxLsp.diagnostics.globals": [],
         // If you want to check only opened files, choice Opened; else choice Any.
-        "Lua.diagnostics.neededFileStatus": {
+        "robloxLsp.diagnostics.neededFileStatus": {
             "ambiguity-1": "Any",
             "circle-doc-class": "Any",
             "count-down-loop": "Any",
@@ -108,7 +105,7 @@
             "deprecated": "Opened"
         },
         // Modified diagnostic severity.
-        "Lua.diagnostics.severity": {
+        "robloxLsp.diagnostics.severity": {
             "ambiguity-1": "Warning",
             "circle-doc-class": "Warning",
             "count-down-loop": "Warning",
@@ -146,115 +143,99 @@
         // Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit
         // any file, the entire workspace will be re-diagnosed in the background. Set to negative to
         // disable workspace diagnostics.
-        "Lua.diagnostics.workspaceDelay": 0,
+        "robloxLsp.diagnostics.workspaceDelay": 0,
         // Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also
         // reduces the speed of workspace diagnostics. The diagnosis of the file you are currently
         // editing is always done at full speed and is not affected by this setting.
-        "Lua.diagnostics.workspaceRate": 100,
+        "robloxLsp.diagnostics.workspaceRate": 100,
+
         // Enable hint.
-        "Lua.hint.enable": false,
+        "robloxLsp.hint.enable": false,
         // Hint parameter name when the parameter called is literal.
-        "Lua.hint.paramName": false,
+        "robloxLsp.hint.paramName": false,
         // Show type hints at the parameter of the function.
-        "Lua.hint.paramType": true,
+        "robloxLsp.hint.paramType": true,
         // Show return type hints
-        "Lua.hint.returnType": false,
+        "robloxLsp.hint.returnType": false,
+        // Show variable type hints
+        "robloxLsp.hint.variableType": true,
         // Hint type at assignment operation.
-        "Lua.hint.setType": true,
+        "robloxLsp.hint.setType": true,
+
         // Enable hover.
-        "Lua.hover.enable": true,
+        "robloxLsp.hover.enable": true,
         // When the value corresponds to multiple types, limit the number of types displaying.
-        "Lua.hover.enumsLimit": 5,
-        "Lua.hover.fieldInfer": 3000,
+        "robloxLsp.hover.enumsLimit": 5,
+        "robloxLsp.hover.fieldInfer": 3000,
         // When hovering to view a table, limits the maximum number of previews for fields.
-        "Lua.hover.previewFields": 100,
+        "robloxLsp.hover.previewFields": 100,
         // Hover to view numeric content (only if literal is not decimal).
-        "Lua.hover.viewNumber": true,
+        "robloxLsp.hover.viewNumber": true,
         // Hover to view the contents of a string (only if the literal contains an escape
         // character).
-        "Lua.hover.viewString": true,
+        "robloxLsp.hover.viewString": true,
         // The maximum length of a hover to view the contents of a string.
-        "Lua.hover.viewStringMax": 1000,
+        "robloxLsp.hover.viewStringMax": 1000,
+
         // intellisense custom
-        "Lua.intelliSense.autoDetectLibraries": true,
-        "Lua.intelliSense.searchDepth": true,
-        // Misc settings
-        "Lua.misc.color3Picker": false,
-        "Lua.misc.goToScriptLink": true,
-        "Lua.misc.serverPort": 27843,
-        "Lua.misc.serviceAutoImport": true,
-        // Adjust the enabled state of the built-in library. You can disable (or redefine) the non-
-        // existent library according to the actual runtime environment.
-        // * `default`: Indicates that the library will be enabled or disabled according to the
-        // runtime version
-        // * `enable`: always enable
-        // * `disable`: always disable
-        "Lua.runtime.builtin": {},
-        // File encoding. The `ansi` option is only available under the `Windows` platform.
-        // possible values: utf8, ansi
-        "Lua.runtime.fileEncoding": "utf8",
-        // Supports non-standard symbols. Make sure that your runtime environment supports these
-        // symbols.
-        "Lua.runtime.nonstandardSymbol": [],
+        "robloxLsp.intelliSense.autoDetectLibraries": true,
+        "robloxLsp.intelliSense.searchDepth": true,
+
         // `package.path`
-        "Lua.runtime.path": [
+        "robloxLsp.runtime.path": [
             "?.lua",
             "?/init.lua",
             "?/?.lua"
         ],
         // Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-
         // server/wiki/Plugin) to learn more.
-        "Lua.runtime.plugin": "",
-        // The custom global variables are regarded as some special built-in variables, and the
-        // language server will provide special support
-        // The following example shows that 'include' is treated as' require '.
-        // ```json
-        // "Lua.runtime.special" : {
-        //     "include" : "require"
-        // }
-        // ```
-        "Lua.runtime.special": {},
-        // Allows Unicode characters in name.
-        "Lua.runtime.unicodeName": false,
-        // Lua runtime version.
-        // possible values: Lua 5.1, Lua 5.2, Lua 5.3, Lua 5.4, LuaJIT
-        "Lua.runtime.version": "Lua 5.4",
+        "robloxLsp.runtime.plugin": "",
+        // File encoding. The `ansi` option is only available under the `Windows` platform.
+        // possible values: utf8, ansi
+        "robloxLsp.runtime.fileEncoding": "utf8",
+
         // Enable signature help.
-        "Lua.signatureHelp.enable": true,
-        "Lua.signatureHelp.documentation": true,
-        // Enable telemetry to send your editor information and error logs over the network. Read
-        // our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-
-        // Policy).
-        "Lua.telemetry.enable": false,
+        "robloxLsp.signatureHelp.enable": true,
+        "robloxLsp.signatureHelp.documentation": true,
+
         // Show progress bar in status bar.
-        "Lua.window.progressBar": true,
+        "robloxLsp.window.progressBar": true,
+        // Show status bar
+        "robloxLsp.window.statusBar": true,
         // Ignored files and directories (Use `.gitignore` grammar).
-        "Lua.workspace.ignoreDir": [
+        "robloxLsp.workspace.ignoreDir": [
             ".vscode"
         ],
         // Ignore submodules.
-        "Lua.workspace.ignoreSubmodules": true,
+        "robloxLsp.workspace.ignoreSubmodules": true,
+        // Rojo default file
+        "robloxLsp.workspace.rojoProjectFile": "default",
+        "robloxLsp.workspace.loadMode": "All Files",
         // The directory path of the external function library.
         // The language service will additionally load the lua files in these directories, even if
         // they are not in the current workspace, for definition, completion and other features.
-        "Lua.workspace.library": [],
+        "robloxLsp.workspace.library": [],
         // Max preloaded files.
-        "Lua.workspace.maxPreload": 1000,
+        "robloxLsp.workspace.maxPreload": 1000,
         // Skip files larger than this value (KB) when preloading.
-        "Lua.workspace.preloadFileSize": 100,
+        "robloxLsp.workspace.preloadFileSize": 100,
         // Ignore files list in `.gitignore` .
-        "Lua.workspace.useGitIgnore": true,
+        "robloxLsp.workspace.useGitIgnore": true,
         // Add private third-party library configuration file paths here, please refer to the built-
         // in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)
-        "Lua.workspace.userThirdParty": [],
-        "Lua.workspace.loadMode": "All Files",
-        "Lua.workspace.loadRequiredFiles": true,
-        "Lua.workspace.rojoProjectFile": "default",
-        "Lua.workspace.useFilesExclude": true,
+        "robloxLsp.workspace.userThirdParty": [],
+        "robloxLsp.workspace.loadRequiredFiles": true,
+        "robloxLsp.workspace.useFilesExclude": true,
+        // Misc settings
+        "robloxLsp.misc.serviceAutoImport": true,
+        "robloxLsp.misc.color3Picker": false,
+        "robloxLsp.misc.goToScriptLink": true,
+        "robloxLsp.misc.serverPort": 27843,
+        "robloxLsp.misc.parameters": "",
         // type checking
-        "Lua.typeChecking.mode": "Disabled",
-        "Lua.typeChecking.showFullType": false,
-        "Lua.typeChecking.options": {
+        "robloxLsp.typeChecking.mode": "Disabled",
+        "robloxLsp.typeChecking.showFullType": false,
+        "robloxLsp.typeChecking.options": {
             "ignore-extra-fields": false,
             "infer-instance-from-unknown": false,
             "recursive-get-type": false,

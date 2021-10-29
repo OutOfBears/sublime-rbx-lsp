@@ -11,6 +11,7 @@ import urllib.request
 import zipfile
 import shutil
 import tempfile
+import json
 
 class SublimeRbxLua(AbstractPlugin):
     VSC_PLUGIN = "https://github.com/NightrainsRbx/RobloxLsp/releases/download/v{0}/robloxlsp-{0}.vsix"
@@ -52,14 +53,23 @@ class SublimeRbxLua(AbstractPlugin):
         return os.path.join(cls.base_dir(), "bin", cls.bin_platform())
 
     @classmethod
+    def get_latest_version(self) -> str:
+        response = urllib.request.urlopen("https://api.github.com/repos/NightrainsRbx/RobloxLsp/releases/latest")
+        response_data = json.loads(response.read().decode(response.info().get_param('charset') or 'utf-8'))
+        return response_data["name"]
+
+    @classmethod
+    def get_current_version(self) -> str:
+        with open(self.version_file(), "r") as fp:
+            return fp.read().strip()
+
+    @classmethod
     def needs_update_or_installation(self) -> bool:
-        settings, _ = self.configuration()
-        server_version = str(settings.get("server_version"))
-        print(self.bindir())
         try:
-            with open(self.version_file(), "r") as fp:
-                needs_update = server_version != fp.read().strip()
-                return needs_update
+            current_version = self.get_current_version()
+            latest_version = self.get_latest_version()
+            print(current_version, latest_version)
+            return current_version == latest_version
 
         except OSError:
             return True
@@ -75,7 +85,6 @@ class SublimeRbxLua(AbstractPlugin):
 
         return False, latest_version
 
-
     @classmethod
     def install_rbx_files(self, version) -> None:
         auto_complete_metadata = os.path.join(self.rbx_storage(), "AutoCompleteMetadata.xml")
@@ -89,11 +98,11 @@ class SublimeRbxLua(AbstractPlugin):
     def install_or_update(self) -> None:
         shutil.rmtree(self.base_dir(), ignore_errors=True)
         try:
-            settings, _ = self.configuration()
-            server_version = str(settings.get("server_version"))
             bin_platform = self.bin_platform()
+            server_version = self.get_latest_version()
             with tempfile.TemporaryDirectory() as tmp:
                 downloaded_file = os.path.join(tmp, "lsp.vsix")
+                print("got", server_version)
                 urllib.request.urlretrieve(self.VSC_PLUGIN.format(server_version), downloaded_file)
                 with zipfile.ZipFile(downloaded_file, "r") as z:
                     z.extractall(tmp)
@@ -123,6 +132,7 @@ class SublimeRbxLua(AbstractPlugin):
         settings, _ = self.configuration()
         return {
             "bin_platform": self.bin_platform(),
+            "locale": str(settings.get("locale")),
             "develop": str(settings.get("develop")),
             "debuggerPort": str(settings.get("debug_port")),
             "debuggerWait": str(settings.get("debug_wait"))
@@ -134,20 +144,13 @@ class SublimeRbxLua(AbstractPlugin):
 
         needs_update, version = self.needs_rbx_update()
         if needs_update:
-            print("updating roblox...")
             self.install_rbx_files(version)
-        else:
-            print("roblox is up to date")
 
         return None
 
-    @classmethod
-    def on_open_uri_async(self, uri: DocumentUri, callback: Callable[[str, str, str], None]) -> bool:
-        return False
-
     def on_pre_server_command(self, command: Mapping[str, Any], done_callback: Callable[[], None]) -> bool:
         cmd = command["command"]
-        if cmd == "lua.config":
+        if cmd == "robloxLsp.config":
             return self._handle_lua_config_command(command["arguments"], done_callback)
         return super().on_pre_server_command(command, done_callback)
 
@@ -164,7 +167,7 @@ class SublimeRbxLua(AbstractPlugin):
             if not isinstance(data, dict):
                 return False
             dd = DottedDict(data)
-            key = "settings.LSP.LSP-lua.settings.{}".format(key)
+            key = "settings.LSP.sublime-rbx-lsp.settings.{}".format(key)
             thelist = dd.get(key)
             if isinstance(thelist, list):
                 if value not in thelist:

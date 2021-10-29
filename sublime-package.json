@@ -1,1225 +1,1254 @@
 {
-    "contributions": {
-      "settings": [
-        {
-          "file_patterns": [
-            "/sublime-rbx-lsp.sublime-settings"
-          ],
-          "schema": {
-            "$id": "sublime://settings/sublime-rbx-lsp",
-            "allOf": [
-              {
-                "$ref": "sublime://settings/LSP-plugin-base"
-              },
-              {
-                "$ref": "sublime://settings/rbx-lsp#/definitions/PluginConfig"
-              }
-            ],
-            "definitions": {
-              "PluginConfig": {
-                "properties": {
-                  "settings": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "Lua.color.mode": {
-                        "default": "Semantic",
-                        "enum": [
-                          "Grammar",
-                          "Semantic"
-                        ],
-                        "markdownDescription": "Color mode.",
-                        "markdownEnumDescriptions": [
-                          "Grammar color.",
-                          "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect."
-                        ],
-                        "type": "string"
-                      },
-                      "Lua.completion.autoRequire": {
-                        "default": true,
-                        "markdownDescription": "When the input looks like a file name, automatically `require` this file.",
-                        "type": "boolean"
-                      },
-                      "Lua.completion.callSnippet": {
-                        "default": "Disable",
-                        "enum": [
-                          "Disable",
-                          "Both",
-                          "Replace"
-                        ],
-                        "markdownDescription": "Shows function call snippets.",
-                        "markdownEnumDescriptions": [
-                          "Only shows `function name`.",
-                          "Shows `function name` and `call snippet`.",
-                          "Only shows `call snippet.`"
-                        ],
-                        "type": "string"
-                      },
-                      "Lua.completion.displayContext": {
-                        "default": 6,
-                        "markdownDescription": "Previewing the relevant code snippet of the suggestion may help you understand the usage of the suggestion. The number set indicates the number of intercepted lines in the code fragment. If it is set to `0`, this feature can be disabled.",
-                        "type": "integer"
-                      },
-                      "Lua.completion.enable": {
-                        "default": true,
-                        "markdownDescription": "Enable completion.",
-                        "type": "boolean"
-                      },
-                      "Lua.completion.keywordSnippet": {
-                        "default": "Replace",
-                        "enum": [
-                          "Disable",
-                          "Both",
-                          "Replace"
-                        ],
-                        "markdownDescription": "Shows keyword syntax snippets.",
-                        "markdownEnumDescriptions": [
-                          "Only shows `keyword`.",
-                          "Shows `keyword` and `syntax snippet`.",
-                          "Only shows `syntax snippet`."
-                        ],
-                        "type": "string"
-                      },
-                      "Lua.completion.showParams": {
-                        "default": true,
-                        "markdownDescription": "Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.",
-                        "type": "boolean"
-                      },
-                      "Lua.completion.workspaceWord": {
-                        "default": true,
-                        "markdownDescription": "Shows words within the workspace.",
-                        "type": "boolean"
-                      },
-                      "Lua.diagnostics.disable": {
-                        "items": {
-                          "type": "string"
-                        },
-                        "markdownDescription": "Disabled diagnostic (Use code in hover brackets).\n",
-                        "type": "array"
-                      },
-                      "Lua.diagnostics.enable": {
-                        "default": true,
-                        "markdownDescription": "Enable diagnostics.",
-                        "type": "boolean"
-                      },
-                      "Lua.diagnostics.globals": {
-                        "items": {
-                          "type": "string"
-                        },
-                        "markdownDescription": "Defined global variables.\n",
-                        "type": "array"
-                      },
-                      "Lua.diagnostics.neededFileStatus": {
-                        "markdownDescription": "If you want to check only opened files, choice Opened; else choice Any.\n",
-                        "properties": {
-                          "ambiguity-1": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.ambiguity-1%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "circle-doc-class": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.circle-doc-class%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "close-non-object": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.close-non-object%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "code-after-break": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.code-after-break%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "count-down-loop": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.count-down-loop%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "deprecated": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.deprecated%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "doc-field-no-class": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.doc-field-no-class%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-doc-class": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.duplicate-doc-class%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-doc-field": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.duplicate-doc-field%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-doc-param": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.duplicate-doc-param%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-index": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.duplicate-index%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-set-field": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.duplicate-set-field%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "empty-block": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.empty-block%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "global-in-nil-env": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.global-in-nil-env%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "lowercase-global": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.lowercase-global%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "newfield-call": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.newfield-call%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "newline-call": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.newline-call%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "no-implicit-any": {
-                            "default": "None",
-                            "description": "%config.diagnostics.no-implicit-any%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "redefined-local": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.redefined-local%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "redundant-parameter": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.redundant-parameter%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "redundant-value": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.redundant-value%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "trailing-space": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.trailing-space%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "unbalanced-assignments": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.unbalanced-assignments%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-doc-class": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.undefined-doc-class%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-doc-name": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.undefined-doc-name%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-doc-param": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.undefined-doc-param%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-env-child": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.undefined-env-child%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-field": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.undefined-field%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-global": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.undefined-global%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "unknown-diag-code": {
-                            "default": "Any",
-                            "description": "%config.diagnostics.unknown-diag-code%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "unused-function": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.unused-function%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "unused-label": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.unused-label%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "unused-local": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.unused-local%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          },
-                          "unused-vararg": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.unused-vararg%",
-                            "enum": [
-                              "Any",
-                              "Opened",
-                              "None"
-                            ],
-                            "type": "string"
-                          }
-                        },
-                        "title": "neededFileStatus",
-                        "type": "object"
-                      },
-                      "Lua.diagnostics.severity": {
-                        "markdownDescription": "Modified diagnostic severity.\n",
-                        "properties": {
-                          "ambiguity-1": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.ambiguity-1%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "circle-doc-class": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.circle-doc-class%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "close-non-object": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.close-non-object%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "code-after-break": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.code-after-break%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "count-down-loop": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.count-down-loop%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "deprecated": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.deprecated%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "doc-field-no-class": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.doc-field-no-class%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-doc-class": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.duplicate-doc-class%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-doc-field": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.duplicate-doc-field%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-doc-param": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.duplicate-doc-param%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-index": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.duplicate-index%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "duplicate-set-field": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.duplicate-set-field%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "empty-block": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.empty-block%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "global-in-nil-env": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.global-in-nil-env%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "lowercase-global": {
-                            "default": "Information",
-                            "description": "%config.diagnostics.lowercase-global%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "newfield-call": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.newfield-call%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "newline-call": {
-                            "default": "Information",
-                            "description": "%config.diagnostics.newline-call%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "no-implicit-any": {
-                            "default": "Information",
-                            "description": "%config.diagnostics.no-implicit-any%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "redefined-local": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.redefined-local%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "redundant-parameter": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.redundant-parameter%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "redundant-value": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.redundant-value%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "trailing-space": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.trailing-space%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "unbalanced-assignments": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.unbalanced-assignments%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-doc-class": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.undefined-doc-class%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-doc-name": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.undefined-doc-name%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-doc-param": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.undefined-doc-param%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-env-child": {
-                            "default": "Information",
-                            "description": "%config.diagnostics.undefined-env-child%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-field": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.undefined-field%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "undefined-global": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.undefined-global%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "unknown-diag-code": {
-                            "default": "Waiting",
-                            "description": "%config.diagnostics.unknown-diag-code%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "unused-function": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.unused-function%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "unused-label": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.unused-label%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "unused-local": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.unused-local%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          },
-                          "unused-vararg": {
-                            "default": "Hint",
-                            "description": "%config.diagnostics.unused-vararg%",
-                            "enum": [
-                              "Error",
-                              "Warning",
-                              "Information",
-                              "Hint"
-                            ],
-                            "type": "string"
-                          }
-                        },
-                        "title": "severity",
-                        "type": "object"
-                      },
-                      "Lua.diagnostics.workspaceDelay": {
-                        "default": 0,
-                        "markdownDescription": "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
-                        "type": "integer"
-                      },
-                      "Lua.diagnostics.workspaceRate": {
-                        "default": 100,
-                        "markdownDescription": "Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
-                        "type": "integer"
-                      },
-                      "Lua.hint.enable": {
-                        "default": false,
-                        "markdownDescription": "Enabel hint.",
-                        "type": "boolean"
-                      },
-                      "Lua.hint.paramName": {
-                        "default": true,
-                        "markdownDescription": "Hint parameter name when the parameter called is literal.",
-                        "type": "boolean"
-                      },
-                      "Lua.hint.paramType": {
-                        "default": true,
-                        "markdownDescription": "Show type hints at the parameter of the function.",
-                        "type": "boolean"
-                      },
-                      "Lua.hint.setType": {
-                        "default": false,
-                        "markdownDescription": "Hint type at assignment operation.",
-                        "type": "boolean"
-                      },
-                      "Lua.hover.enable": {
-                        "default": true,
-                        "markdownDescription": "Enable hover.",
-                        "type": "boolean"
-                      },
-                      "Lua.hover.enumsLimit": {
-                        "default": 5,
-                        "markdownDescription": "When the value corresponds to multiple types, limit the number of types displaying.",
-                        "type": "integer"
-                      },
-                      "Lua.hover.previewFields": {
-                        "default": 20,
-                        "markdownDescription": "When hovering to view a table, limits the maximum number of previews for fields.",
-                        "type": "integer"
-                      },
-                      "Lua.hover.viewNumber": {
-                        "default": true,
-                        "markdownDescription": "Hover to view numeric content (only if literal is not decimal).",
-                        "type": "boolean"
-                      },
-                      "Lua.hover.viewString": {
-                        "default": true,
-                        "markdownDescription": "Hover to view the contents of a string (only if the literal contains an escape character).",
-                        "type": "boolean"
-                      },
-                      "Lua.hover.viewStringMax": {
-                        "default": 1000,
-                        "markdownDescription": "The maximum length of a hover to view the contents of a string.",
-                        "type": "integer"
-                      },
-                      "Lua.runtime.builtin": {
-                        "markdownDescription": "Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.\n\n* `default`: Indicates that the library will be enabled or disabled according to the runtime version\n* `enable`: always enable\n* `disable`: always disable\n",
-                        "properties": {
-                          "basic": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.basic%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "bit": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.bit%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "bit32": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.bit32%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "builtin": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.builtin%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "coroutine": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.coroutine%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "debug": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.debug%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "ffi": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.ffi%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "io": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.io%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "jit": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.jit%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "math": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.math%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "os": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.os%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "package": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.package%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "string": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.string%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "table": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.table%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          },
-                          "utf8": {
-                            "default": "default",
-                            "description": "%config.runtime.builtin.utf8%",
-                            "enum": [
-                              "default",
-                              "enable",
-                              "disable"
-                            ],
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "Lua.runtime.fileEncoding": {
-                        "default": "utf8",
-                        "enum": [
-                          "utf8",
-                          "ansi"
-                        ],
-                        "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
-                        "type": "string"
-                      },
-                      "Lua.runtime.nonstandardSymbol": {
-                        "items": {
-                          "enum": [
-                            "//",
-                            "/**/",
-                            "`",
-                            "+=",
-                            "-=",
-                            "*=",
-                            "/=",
-                            "||",
-                            "&&",
-                            "!",
-                            "!=",
-                            "continue"
-                          ],
-                          "type": "string"
-                        },
-                        "markdownDescription": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
-                        "type": "array"
-                      },
-                      "Lua.runtime.path": {
-                        "default": [
-                          "?.lua",
-                          "?/init.lua",
-                          "?/?.lua"
-                        ],
-                        "items": {
-                          "type": "string"
-                        },
-                        "markdownDescription": "`package.path`",
-                        "type": "array"
-                      },
-                      "Lua.runtime.plugin": {
-                        "default": "",
-                        "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugin) to learn more.",
-                        "type": "string"
-                      },
-                      "Lua.runtime.special": {
-                        "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
-                        "patternProperties": {
-                          ".*": {
-                            "default": "require",
-                            "enum": [
-                              "_G",
-                              "rawset",
-                              "rawget",
-                              "setmetatable",
-                              "require",
-                              "dofile",
-                              "loadfile",
-                              "pcall",
-                              "xpcall"
-                            ],
-                            "scope": "resource",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "Lua.runtime.unicodeName": {
-                        "default": false,
-                        "markdownDescription": "Allows Unicode characters in name.",
-                        "type": "boolean"
-                      },
-                      "Lua.runtime.version": {
-                        "default": "Lua 5.4",
-                        "enum": [
-                          "Lua 5.1",
-                          "Lua 5.2",
-                          "Lua 5.3",
-                          "Lua 5.4",
-                          "LuaJIT"
-                        ],
-                        "markdownDescription": "Lua runtime version.",
-                        "type": "string"
-                      },
-                      "Lua.signatureHelp.enable": {
-                        "default": true,
-                        "markdownDescription": "Enable signature help.",
-                        "type": "boolean"
-                      },
-                      "Lua.telemetry.enable": {
-                        "default": null,
-                        "markdownDescription": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).\n",
-                        "type": [
-                          "boolean",
-                          "null"
-                        ]
-                      },
-                      "Lua.window.progressBar": {
-                        "default": true,
-                        "markdownDescription": "Show progress bar in status bar.",
-                        "type": "boolean"
-                      },
-                      "Lua.workspace.ignoreDir": {
-                        "default": [
-                          ".vscode"
-                        ],
-                        "items": {
-                          "type": "string"
-                        },
-                        "markdownDescription": "Ignored files and directories (Use `.gitignore` grammar).\n",
-                        "type": "array"
-                      },
-                      "Lua.workspace.ignoreSubmodules": {
-                        "default": true,
-                        "markdownDescription": "Ignore submodules.",
-                        "type": "boolean"
-                      },
-                      "Lua.workspace.library": {
-                        "items": {
-                          "type": "string"
-                        },
-                        "markdownDescription": "The directory path of the external function library.\nThe language service will additionally load the lua files in these directories, even if they are not in the current workspace, for definition, completion and other features.\n",
-                        "type": "array"
-                      },
-                      "Lua.workspace.maxPreload": {
-                        "default": 1000,
-                        "markdownDescription": "Max preloaded files.",
-                        "type": "integer"
-                      },
-                      "Lua.workspace.preloadFileSize": {
-                        "default": 100,
-                        "markdownDescription": "Skip files larger than this value (KB) when preloading.",
-                        "type": "integer"
-                      },
-                      "Lua.workspace.useGitIgnore": {
-                        "default": true,
-                        "markdownDescription": "Ignore files list in `.gitignore` .",
-                        "type": "boolean"
-                      },
-                      "Lua.workspace.userThirdParty": {
-                        "items": {
-                          "type": "string"
-                        },
-                        "markdownDescription": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
-                        "type": "array"
-                      }
-                    }
-                  }
-                }
-              }
+  "contributions": {
+    "settings": [
+      {
+        "file_patterns": [
+          "/sublime-rbx-lsp.sublime-settings"
+        ],
+        "schema": {
+          "$id": "sublime://settings/sublime-rbx-lsp",
+          "allOf": [
+            {
+              "$ref": "sublime://settings/LSP-plugin-base"
+            },
+            {
+              "$ref": "sublime://settings/sublime-rbx-lsp#/definitions/PluginConfig"
             }
-          }
-        },
-        {
-          "file_patterns": [
-            "/*.sublime-project"
           ],
-          "schema": {
-            "properties": {
-              "settings": {
-                "properties": {
-                  "LSP": {
-                    "properties": {
-                      "rbx-lsp": {
-                        "$ref": "sublime://settings/rbx-lsp#/definitions/PluginConfig"
-                      }
+          "definitions": {
+            "PluginConfig": {
+              "properties": {
+                "settings": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "robloxLsp.color.mode": {
+                      "default": "Semantic",
+                      "enum": [
+                        "Grammar",
+                        "Semantic"
+                      ],
+                      "markdownDescription": "%config.color.mode%",
+                      "markdownEnumDescriptions": [
+                        "%config.color.mode.Grammar%",
+                        "%config.color.mode.Semantic%"
+                      ],
+                      "scope": "resource",
+                      "type": "string"
+                    },
+
+                    "robloxLsp.completion.callParenthesess": {
+                      "default": false,
+                      "markdownDescription": "%config.completion.callParenthesess%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.completion.deprecatedMembers": {
+                      "default": false,
+                      "markdownDescription": "%config.completion.deprecatedMembers%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.completion.endAutocompletion": {
+                      "default": false,
+                      "markdownDescription": "%config.completion.endAutocompletion%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.completion.displayContext": {
+                      "default": 0,
+                      "markdownDescription": "%config.completion.displayContext%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+                    "robloxLsp.completion.enable": {
+                      "default": true,
+                      "markdownDescription": "%config.completion.enable%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.completion.keywordSnippet": {
+                      "default": "Replace",
+                      "enum": [
+                        "Disable",
+                        "Both",
+                        "Replace"
+                      ],
+                      "markdownDescription": "%config.completion.keywordSnippet%",
+                      "markdownEnumDescriptions": [
+                        "%config.completion.keywordSnippet.Disable%",
+                        "%config.completion.keywordSnippet.Both%",
+                        "%config.completion.keywordSnippet.Replace%"
+                      ],
+                      "scope": "resource",
+                      "type": "string"
+                    },
+                    "robloxLsp.completion.showParams": {
+                      "default": true,
+                      "markdownDescription": "%config.completion.showParams%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.completion.workspaceWord": {
+                      "default": true,
+                      "markdownDescription": "%config.completion.workspaceWord%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+
+                    "robloxLsp.diagnostics.disable": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "%config.diagnostics.disable%",
+                      "scope": "resource",
+                      "type": "array"
+                    },
+                    "robloxLsp.diagnostics.enable": {
+                      "default": true,
+                      "markdownDescription": "%config.diagnostics.enable%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.diagnostics.globals": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "%config.diagnostics.globals%",
+                      "scope": "resource",
+                      "type": "array"
+                    },
+                    "robloxLsp.diagnostics.neededFileStatus": {
+                      "markdownDescription": "%config.diagnostics.neededFileStatus%",
+                      "properties": {
+                        "ambiguity-1": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.ambiguity-1%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "circle-doc-class": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.circle-doc-class%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "count-down-loop": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.count-down-loop%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "deprecated": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.deprecated%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "doc-field-no-class": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.doc-field-no-class%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-doc-class": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.duplicate-doc-class%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-doc-field": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.duplicate-doc-field%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-doc-param": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.duplicate-doc-param%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-index": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.duplicate-index%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-set-field": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.duplicate-set-field%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "empty-block": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.empty-block%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "global-in-nil-env": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.global-in-nil-env%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "lowercase-global": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.lowercase-global%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "newfield-call": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.newfield-call%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "newline-call": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.newline-call%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "no-implicit-any": {
+                          "default": "None",
+                          "description": "%config.diagnostics.no-implicit-any%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "redefined-local": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.redefined-local%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "redundant-parameter": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.redundant-parameter%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "redundant-value": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.redundant-value%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "trailing-space": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.trailing-space%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unbalanced-assignments": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.unbalanced-assignments%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-doc-class": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.undefined-doc-class%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-doc-name": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.undefined-doc-name%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-doc-module": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.undefined-doc-module%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-doc-param": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.undefined-doc-param%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-env-child": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.undefined-env-child%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-global": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.undefined-global%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unknown-diag-code": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.unknown-diag-code%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unused-function": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.unused-function%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unused-local": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.unused-local%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unused-vararg": {
+                          "default": "Opened",
+                          "description": "%config.diagnostics.unused-vararg%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "invalid-class-name": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.invalid-class-name%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-type": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.undefined-type%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "redefined-type": {
+                          "default": "Any",
+                          "description": "%config.diagnostics.redefined-type%",
+                          "enum": [
+                            "Any",
+                            "Opened",
+                            "None"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        }
+                      },
+                      "scope": "resource",
+                      "title": "neededFileStatus",
+                      "type": "object"
+                    },
+                    "robloxLsp.diagnostics.severity": {
+                      "markdownDescription": "%config.diagnostics.severity%",
+                      "properties": {
+                        "ambiguity-1": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.ambiguity-1%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "circle-doc-class": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.circle-doc-class%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "count-down-loop": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.count-down-loop%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "deprecated": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.deprecated%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "doc-field-no-class": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.doc-field-no-class%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-doc-class": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.duplicate-doc-class%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-doc-field": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.duplicate-doc-field%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-doc-param": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.duplicate-doc-param%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-index": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.duplicate-index%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "duplicate-set-field": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.duplicate-set-field%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "empty-block": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.empty-block%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "global-in-nil-env": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.global-in-nil-env%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "lowercase-global": {
+                          "default": "Information",
+                          "description": "%config.diagnostics.lowercase-global%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "newfield-call": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.newfield-call%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "newline-call": {
+                          "default": "Information",
+                          "description": "%config.diagnostics.newline-call%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "no-implicit-any": {
+                          "default": "Information",
+                          "description": "%config.diagnostics.no-implicit-any%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "redefined-local": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.redefined-local%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "redundant-parameter": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.redundant-parameter%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "redundant-value": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.redundant-value%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "trailing-space": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.trailing-space%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unbalanced-assignments": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.unbalanced-assignments%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-doc-class": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.undefined-doc-class%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-doc-name": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.undefined-doc-name%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-doc-module": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.undefined-doc-module%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-doc-param": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.undefined-doc-param%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-env-child": {
+                          "default": "Information",
+                          "description": "%config.diagnostics.undefined-env-child%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-field": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.undefined-field%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-global": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.undefined-global%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unknown-diag-code": {
+                          "default": "Waiting",
+                          "description": "%config.diagnostics.unknown-diag-code%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unused-function": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.unused-function%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unused-local": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.unused-local%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "unused-vararg": {
+                          "default": "Hint",
+                          "description": "%config.diagnostics.unused-vararg%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "invalid-class-name": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.invalid-class-name%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "undefined-type": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.undefined-type%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        },
+                        "redefined-type": {
+                          "default": "Warning",
+                          "description": "%config.diagnostics.redefined-type%",
+                          "enum": [
+                            "Error",
+                            "Warning",
+                            "Information",
+                            "Hint"
+                          ],
+                          "scope": "resource",
+                          "type": "string"
+                        }
+                      },
+                      "scope": "resource",
+                      "title": "severity",
+                      "type": "object"
+                    },
+                    "robloxLsp.diagnostics.workspaceDelay": {
+                      "default": 0,
+                      "markdownDescription": "%config.diagnostics.workspaceDelay%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+                    "robloxLsp.diagnostics.workspaceRate": {
+                      "default": 100,
+                      "markdownDescription": "%config.diagnostics.workspaceRate%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+
+                    "robloxLsp.hint.enable": {
+                      "default": false,
+                      "markdownDescription": "%config.hint.enable%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.hint.paramName": {
+                      "default": false,
+                      "markdownDescription": "%config.hint.paramName%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.hint.paramType": {
+                      "default": true,
+                      "markdownDescription": "%config.hint.paramType%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.hint.returnType": {
+                      "default": false,
+                      "markdownDescription": "%config.hint.returnType%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.hint.variableType": {
+                      "default": true,
+                      "markdownDescription": "%config.hint.variableType%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.hint.setType": {
+                      "default": false,
+                      "markdownDescription": "%config.hint.setType%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+
+                    "robloxLsp.hover.enable": {
+                      "default": true,
+                      "markdownDescription": "%config.hover.enable%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.hover.enumsLimit": {
+                      "default": 5,
+                      "markdownDescription": "%config.hover.enumsLimit%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+                    "robloxLsp.hover.fieldInfer": {
+                      "default": 3000,
+                      "markdownDescription": "%config.hover.fieldInfer%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+                    "robloxLsp.hover.previewFields": {
+                      "default": 100,
+                      "markdownDescription": "%config.hover.previewFields%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+                    "robloxLsp.hover.viewNumber": {
+                      "default": true,
+                      "markdownDescription": "%config.hover.viewNumber%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.hover.viewString": {
+                      "default": true,
+                      "markdownDescription": "%config.hover.viewString%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.hover.viewStringMax": {
+                      "default": 1000,
+                      "markdownDescription": "%config.hover.viewStringMax%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+
+                    "robloxLsp.intelliSense.autoDetectLibraries": {
+                      "default": 0,
+                      "markdownDescription": "%config.intelliSense.autoDetectLibraries%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+                    "robloxLsp.intelliSense.searchDepth": {
+                      "default": 0,
+                      "markdownDescription": "%config.intelliSense.searchDepth%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+
+                    "robloxLsp.runtime.path": {
+                      "default": [
+                        "?.lua",
+                        "?/init.lua",
+                        "?/?.lua"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "%config.runtime.path%",
+                      "scope": "resource",
+                      "type": "array"
+                    },
+                    "robloxLsp.runtime.plugin": {
+                      "default": ".vscode/lua/plugin.lua",
+                      "markdownDescription": "%config.runtime.plugin%",
+                      "scope": "resource",
+                      "type": "string"
+                    },
+                    "robloxLsp.runtime.fileEncoding": {
+                      "default": "utf8",
+                      "enum": [
+                        "utf8",
+                        "ansi"
+                      ],
+                      "markdownDescription": "%config.runtime.fileEncoding%",
+                      "scope": "resource",
+                      "type": "string"
+                    },
+
+                    "robloxLsp.signatureHelp.enable": {
+                      "default": true,
+                      "markdownDescription": "%config.signatureHelp.enable%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.signatureHelp.documentation": {
+                      "default": true,
+                      "markdownDescription": "%config.signatureHelp.documentation%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+
+                    "robloxLsp.window.progressBar": {
+                      "default": true,
+                      "markdownDescription": "%config.window.progressBar%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.window.statusBar": {
+                      "default": true,
+                      "markdownDescription": "%config.window.statusBar%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.workspace.ignoreDir": {
+                      "default": [
+                        ".vscode"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "%config.workspace.ignoreDir%",
+                      "scope": "resource",
+                      "type": "array"
+                    },
+                    "robloxLsp.workspace.ignoreSubmodules": {
+                      "default": true,
+                      "markdownDescription": "%config.workspace.ignoreSubmodules%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.workspace.rojoProjectFile": {
+                      "default": "default",
+                      "markdownDescription": "%config.workspace.rojoProjectFile%",
+                      "scope": "resource",
+                      "type": "string"
+                    },
+                    "robloxLsp.workspace.loadMode": {
+                      "default": "All Files",
+                      "enum": [
+                        "All Files",
+                        "Rojo Project"
+                      ],
+                      "markdownDescription": "%config.workspace.loadMode%",
+                      "markdownEnumDescriptions": [
+                        "%config.workspace.loadMode.allFiles%",
+                        "%config.workspace.loadMode.rojoProject%"
+                      ],
+                      "scope": "resource",
+                      "type": "string"
+                    },
+                    "robloxLsp.workspace.library": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "markdownDescription": "%config.workspace.library%",
+                      "scope": "resource",
+                      "type": "array"
+                    },
+                    "robloxLsp.workspace.maxPreload": {
+                      "default": 1000,
+                      "markdownDescription": "%config.workspace.maxPreload%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+                    "robloxLsp.workspace.preloadFileSize": {
+                      "default": 100,
+                      "markdownDescription": "%config.workspace.preloadFileSize%",
+                      "scope": "resource",
+                      "type": "integer"
+                    },
+                    "robloxLsp.workspace.useGitIgnore": {
+                      "default": true,
+                      "markdownDescription": "%config.workspace.useGitIgnore%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.workspace.loadRequiredFiles": {
+                      "default": true,
+                      "markdownDescription": "%config.workspace.loadRequiredFiles%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.workspace.useFilesExclude": {
+                      "default": true,
+                      "markdownDescription": "%config.workspace.useFilesExclude%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+
+                    "robloxLsp.misc.serviceAutoImport": {
+                      "default": true,
+                      "markdownDescription": "%config.misc.serviceAutoImport%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.misc.color3Picker": {
+                      "default": true,
+                      "markdownDescription": "%config.misc.color3Picker%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.misc.goToScriptLink": {
+                      "default": true,
+                      "markdownDescription": "%config.misc.goToScriptLink%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.misc.serverPort": {
+                      "default": 27843,
+                      "markdownDescription": "%config.misc.serverPort%",
+                      "scope": "resource",
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 65535
+                    },
+                    "robloxLsp.misc.parameters": {
+                      "default": "",
+                      "markdownDescription": "%config.misc.parameters%",
+                      "scope": "resource",
+                      "type": "string"
+                    },
+
+                    "robloxLsp.typeChecking.mode": {
+                      "default": "Disabled",
+                      "enum": [
+                        "Disabled",
+                        "Non Strict",
+                        "Strict"
+                      ],
+                      "markdownDescription": "%config.typeChecking.mode%",
+                      "markdownEnumDescriptions": [
+                        "%config.typeChecking.mode.disabled%",
+                        "%config.typeChecking.mode.nonStrict%",
+                        "%config.typeChecking.mode.strict%"
+                      ],
+                      "scope": "resource",
+                      "type": "string"
+                    },
+                    "robloxLsp.typeChecking.showFullType": {
+                      "default": false,
+                      "markdownDescription": "%config.typeChecking.showFullType%",
+                      "scope": "resource",
+                      "type": "boolean"
+                    },
+                    "robloxLsp.typeChecking.options": {
+                      "markdownDescription": "%config.typeChecking.options%",
+                      "properties": {
+                        "union-bivariance": {
+                          "default": false,
+                          "description": "%config.typeChecking.options.union-bivariance%",
+                          "scope": "resource",
+                          "type": "boolean"
+                        },
+                        "ignore-extra-fields": {
+                          "default": false,
+                          "description": "%config.typeChecking.options.ignore-extra-fields%",
+                          "scope": "resource",
+                          "type": "boolean"
+                        },
+                        "infer-instance-from-unknown": {
+                          "default": false,
+                          "description": "%config.typeChecking.options.infer-instance-from-unknown%",
+                          "scope": "resource",
+                          "type": "boolean"
+                        },
+                        "recursive-get-type": {
+                          "default": false,
+                          "description": "%config.typeChecking.options.recursive-get-type%",
+                          "scope": "resource",
+                          "type": "boolean"
+                        }
+                      },
+                      "scope": "resource",
+                      "type": "object"
                     }
                   }
                 }
@@ -1227,7 +1256,27 @@
             }
           }
         }
-      ]
-    }
+      },
+      {
+        "file_patterns": [
+          "/*.sublime-project"
+        ],
+        "schema": {
+          "properties": {
+            "settings": {
+              "properties": {
+                "LSP": {
+                  "properties": {
+                    "sublime-rbx-lsp": {
+                      "$ref": "sublime://settings/sublime-rbx-lsp#/definitions/PluginConfig"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
   }
-  
+}
