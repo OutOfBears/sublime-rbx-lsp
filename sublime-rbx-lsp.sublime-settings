@@ -1,0 +1,264 @@
+{
+    // The startup command for this language server
+    "command": [
+        "${storage_path}/sublime-rbx-lsp/bin/${bin_platform}/lua-language-server",
+        "-E",
+        "${storage_path}/sublime-rbx-lsp/main.lua",
+        "--develop=${develop}",
+        "--dbgport=${debuggerPort}",
+        "--dbgwait=${debuggerWait}"
+    ],
+
+    // The server version to download in $CACHE/Package Storage
+    "server_version": "1.4.0",
+
+    // Debugging mode
+    "develop": false,
+    "debug_port": 11412,
+    "debug_wait": false,
+
+
+
+    // Disable the trigger characters, because there's too many of them. The
+    // default Lua syntax is capable enough to best decide when to trigger
+    // the auto-complete widget.
+    "disabled_capabilities": {
+        "completionProvider": {
+            "triggerCharacters": true
+        }
+    },
+
+    // We start this server when opening a lua file
+    "selector": "source.lua",
+
+    // The server-specific settings
+    "settings": {
+        // Required
+        "files.exclude": [],
+        "files.associations": [],
+        "editor.semanticHighlighting.enabled": true,
+        "editor.acceptSuggestionOnEnter": true,
+
+        // Color mode.
+        // possible values: Grammar, Semantic
+        "Lua.color.mode": "Semantic",
+        // Lua completion, misc
+        "lua.completion.callParenthesess": false,
+        "lua.completion.deprecatedMembers": false,
+        "lua.completion.endAutocompletion": false,
+        // When the input looks like a file name, automatically `require` this file.
+        "Lua.completion.autoRequire": true,
+        // Shows function call snippets.
+        // possible values: Disable, Both, Replace
+        "Lua.completion.callSnippet": "Replace",
+        // Previewing the relevant code snippet of the suggestion may help you understand the usage
+        // of the suggestion. The number set indicates the number of intercepted lines in the code
+        // fragment. If it is set to `0`, this feature can be disabled.
+        "Lua.completion.displayContext": 0,
+        // Enable completion.
+        "Lua.completion.enable": true,
+        // Shows keyword syntax snippets.
+        // possible values: Disable, Both, Replace
+        "Lua.completion.keywordSnippet": "Replace",
+        // Display parameters in completion list. When the function has multiple definitions, they
+        // will be displayed separately.
+        "Lua.completion.showParams": true,
+        // Shows words within the workspace.
+        "Lua.completion.workspaceWord": true,
+        // Disabled diagnostic (Use code in hover brackets).
+        "Lua.diagnostics.disable": [],
+        // Enable diagnostics.
+        "Lua.diagnostics.enable": true,
+        // Defined global variables.
+        "Lua.diagnostics.globals": [],
+        // If you want to check only opened files, choice Opened; else choice Any.
+        "Lua.diagnostics.neededFileStatus": {
+            "ambiguity-1": "Any",
+            "circle-doc-class": "Any",
+            "count-down-loop": "Any",
+            "doc-field-no-class": "Any",
+            "duplicate-doc-class": "Any",
+            "duplicate-doc-field": "Any",
+            "duplicate-doc-param": "Any",
+            "duplicate-index": "Any",
+            "duplicate-set-field": "Any",
+            "empty-block": "Opened",
+            "global-in-nil-env": "Any",
+            "invalid-class-name": "Any",
+            "newfield-call": "Any",
+            "newline-call": "Any",
+            "no-implicit-any": "None",
+            "redefined-local": "Opened",
+            "redefined-type": "Any",
+            "redundant-parameter": "Opened",
+            "redundant-value": "Opened",
+            "trailing-space": "Opened",
+            "unbalanced-assignments": "Any",
+            "undefined-doc-class": "Any",
+            "undefined-doc-module": "Opened",
+            "undefined-doc-name": "Any",
+            "undefined-doc-param": "Any",
+            "undefined-env-child": "Any",
+            "undefined-global": "Any",
+            "undefined-type": "Any",
+            "unknown-diag-code": "Any",
+            "unused-function": "Opened",
+            "unused-local": "Opened",
+            "unused-vararg": "Opened",
+            "deprecated": "Opened"
+        },
+        // Modified diagnostic severity.
+        "Lua.diagnostics.severity": {
+            "ambiguity-1": "Warning",
+            "circle-doc-class": "Warning",
+            "count-down-loop": "Warning",
+            "doc-field-no-class": "Warning",
+            "duplicate-doc-class": "Warning",
+            "duplicate-doc-field": "Warning",
+            "duplicate-doc-param": "Warning",
+            "duplicate-index": "Warning",
+            "duplicate-set-field": "Warning",
+            "empty-block": "Hint",
+            "global-in-nil-env": "Warning",
+            "invalid-class-name": "Warning",
+            "newfield-call": "Warning",
+            "newline-call": "Information",
+            "no-implicit-any": "Information",
+            "redefined-local": "Hint",
+            "redefined-type": "Warning",
+            "redundant-parameter": "Hint",
+            "redundant-value": "Hint",
+            "trailing-space": "Hint",
+            "unbalanced-assignments": "Hint",
+            "undefined-doc-class": "Warning",
+            "undefined-doc-module": "Warning",
+            "undefined-doc-name": "Warning",
+            "undefined-doc-param": "Warning",
+            "undefined-env-child": "Information",
+            "undefined-global": "Warning",
+            "undefined-type": "Warning",
+            "unknown-diag-code": "Warning",
+            "unused-function": "Hint",
+            "unused-local": "Hint",
+            "unused-vararg": "Hint",
+            "deprecated": "Hint"
+        },
+        // Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit
+        // any file, the entire workspace will be re-diagnosed in the background. Set to negative to
+        // disable workspace diagnostics.
+        "Lua.diagnostics.workspaceDelay": 0,
+        // Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also
+        // reduces the speed of workspace diagnostics. The diagnosis of the file you are currently
+        // editing is always done at full speed and is not affected by this setting.
+        "Lua.diagnostics.workspaceRate": 100,
+        // Enable hint.
+        "Lua.hint.enable": false,
+        // Hint parameter name when the parameter called is literal.
+        "Lua.hint.paramName": false,
+        // Show type hints at the parameter of the function.
+        "Lua.hint.paramType": true,
+        // Show return type hints
+        "Lua.hint.returnType": false,
+        // Hint type at assignment operation.
+        "Lua.hint.setType": true,
+        // Enable hover.
+        "Lua.hover.enable": true,
+        // When the value corresponds to multiple types, limit the number of types displaying.
+        "Lua.hover.enumsLimit": 5,
+        "Lua.hover.fieldInfer": 3000,
+        // When hovering to view a table, limits the maximum number of previews for fields.
+        "Lua.hover.previewFields": 100,
+        // Hover to view numeric content (only if literal is not decimal).
+        "Lua.hover.viewNumber": true,
+        // Hover to view the contents of a string (only if the literal contains an escape
+        // character).
+        "Lua.hover.viewString": true,
+        // The maximum length of a hover to view the contents of a string.
+        "Lua.hover.viewStringMax": 1000,
+        // intellisense custom
+        "Lua.intelliSense.autoDetectLibraries": true,
+        "Lua.intelliSense.searchDepth": true,
+        // Misc settings
+        "Lua.misc.color3Picker": false,
+        "Lua.misc.goToScriptLink": true,
+        "Lua.misc.serverPort": 27843,
+        "Lua.misc.serviceAutoImport": true,
+        // Adjust the enabled state of the built-in library. You can disable (or redefine) the non-
+        // existent library according to the actual runtime environment.
+        // * `default`: Indicates that the library will be enabled or disabled according to the
+        // runtime version
+        // * `enable`: always enable
+        // * `disable`: always disable
+        "Lua.runtime.builtin": {},
+        // File encoding. The `ansi` option is only available under the `Windows` platform.
+        // possible values: utf8, ansi
+        "Lua.runtime.fileEncoding": "utf8",
+        // Supports non-standard symbols. Make sure that your runtime environment supports these
+        // symbols.
+        "Lua.runtime.nonstandardSymbol": [],
+        // `package.path`
+        "Lua.runtime.path": [
+            "?.lua",
+            "?/init.lua",
+            "?/?.lua"
+        ],
+        // Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-
+        // server/wiki/Plugin) to learn more.
+        "Lua.runtime.plugin": "",
+        // The custom global variables are regarded as some special built-in variables, and the
+        // language server will provide special support
+        // The following example shows that 'include' is treated as' require '.
+        // ```json
+        // "Lua.runtime.special" : {
+        //     "include" : "require"
+        // }
+        // ```
+        "Lua.runtime.special": {},
+        // Allows Unicode characters in name.
+        "Lua.runtime.unicodeName": false,
+        // Lua runtime version.
+        // possible values: Lua 5.1, Lua 5.2, Lua 5.3, Lua 5.4, LuaJIT
+        "Lua.runtime.version": "Lua 5.4",
+        // Enable signature help.
+        "Lua.signatureHelp.enable": true,
+        "Lua.signatureHelp.documentation": true,
+        // Enable telemetry to send your editor information and error logs over the network. Read
+        // our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-
+        // Policy).
+        "Lua.telemetry.enable": false,
+        // Show progress bar in status bar.
+        "Lua.window.progressBar": true,
+        // Ignored files and directories (Use `.gitignore` grammar).
+        "Lua.workspace.ignoreDir": [
+            ".vscode"
+        ],
+        // Ignore submodules.
+        "Lua.workspace.ignoreSubmodules": true,
+        // The directory path of the external function library.
+        // The language service will additionally load the lua files in these directories, even if
+        // they are not in the current workspace, for definition, completion and other features.
+        "Lua.workspace.library": [],
+        // Max preloaded files.
+        "Lua.workspace.maxPreload": 1000,
+        // Skip files larger than this value (KB) when preloading.
+        "Lua.workspace.preloadFileSize": 100,
+        // Ignore files list in `.gitignore` .
+        "Lua.workspace.useGitIgnore": true,
+        // Add private third-party library configuration file paths here, please refer to the built-
+        // in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)
+        "Lua.workspace.userThirdParty": [],
+        "Lua.workspace.loadMode": "All Files",
+        "Lua.workspace.loadRequiredFiles": true,
+        "Lua.workspace.rojoProjectFile": "default",
+        "Lua.workspace.useFilesExclude": true,
+        // type checking
+        "Lua.typeChecking.mode": "Disabled",
+        "Lua.typeChecking.showFullType": false,
+        "Lua.typeChecking.options": {
+            "ignore-extra-fields": false,
+            "infer-instance-from-unknown": false,
+            "recursive-get-type": false,
+            "union-bivariance": false
+        }
+    }
+}

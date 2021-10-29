@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "Preferences: RBX-LSP Settings",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/sublime-rbx-lsp/sublime-rbx-lsp.sublime-settings",
+            "default": "// Settings in here override those in \"sublime-rbx-lsp/sublime-rbx-lsp.sublime-settings\"\n{\n\t$0\n}\n"
+        }
+    }
+]
