@@ -119,11 +119,6 @@ class SublimeRbxLua(AbstractPlugin):
         return sublime.load_settings(base_name), file_path
 
     @classmethod
-    def on_workspace_configuration(self, params, config) -> None:
-        print("test", params, config)
-        pass
-
-    @classmethod
     def additional_variables(self) -> Optional[Dict[str, str]]:
         settings, _ = self.configuration()
         return {
@@ -148,18 +143,15 @@ class SublimeRbxLua(AbstractPlugin):
 
     @classmethod
     def on_open_uri_async(self, uri: DocumentUri, callback: Callable[[str, str, str], None]) -> bool:
-        print("open uri", uri)
         return False
 
     def on_pre_server_command(self, command: Mapping[str, Any], done_callback: Callable[[], None]) -> bool:
-        print("server command")
         cmd = command["command"]
         if cmd == "lua.config":
             return self._handle_lua_config_command(command["arguments"], done_callback)
         return super().on_pre_server_command(command, done_callback)
 
     def _handle_lua_config_command(self, args: List[Dict[str, Any]], done_callback: Callable[[], None]) -> bool:
-        print("config command")
         action = args[0]["action"]
         if action == "add" or action == "set":
             key = args[0]["key"]
@@ -185,10 +177,6 @@ class SublimeRbxLua(AbstractPlugin):
             done_callback()
             return True
         return False
-
-    def m_luaComment(self, params):
-        print("got comment", params)
-        pass
 
 def plugin_loaded() -> None:
     register_plugin(SublimeRbxLua)
