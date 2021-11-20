@@ -55,12 +55,12 @@ class SublimeRbxLua(AbstractPlugin):
         return os.path.join(self.base_dir(), "lsp.vsix")
 
     @classmethod
-    def rbx_storage(self) -> str:
-        return os.path.join(self.base_dir(), "rbx")
+    def api_storage(self) -> str:
+        return os.path.join(self.base_dir(), "api")
 
     @classmethod
     def rbx_version_file(self) -> str:
-        return os.path.join(self.rbx_storage(), "version.txt")
+        return os.path.join(self.api_storage(), "version.txt")
 
     @classmethod
     def bin_platform(self) -> str:
@@ -78,7 +78,11 @@ class SublimeRbxLua(AbstractPlugin):
     def get_latest_lsp_version(self) -> str:
         response = urllib.request.urlopen("https://api.github.com/repos/NightrainsRbx/RobloxLsp/releases/latest")
         response_data = json.loads(response.read().decode(response.info().get_param('charset') or 'utf-8'))
-        return response_data["name"]
+        version = response_data["name"]
+        if version.startswith("v"):
+            version = version[1:]
+
+        return version
 
     @classmethod
     def get_current_lsp_version(self) -> str:
@@ -126,9 +130,9 @@ class SublimeRbxLua(AbstractPlugin):
 
     @classmethod
     def install_rbx_files(self, version) -> None:
-        auto_complete_metadata = os.path.join(self.rbx_storage(), "AutoCompleteMetadata.xml")
-        api_dump = os.path.join(self.rbx_storage(), "API-Dump.json")
-        urllib.request.urlretrieve("https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Tracker/roblox/AutocompleteMetadata.xml", auto_complete_metadata)
+        auto_complete_metadata = os.path.join(self.api_storage(), "API-Docs.json")
+        api_dump = os.path.join(self.api_storage(), "API-Dump.json")
+        urllib.request.urlretrieve("https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/api-docs/en-us.json", auto_complete_metadata)
         urllib.request.urlretrieve("https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Tracker/roblox/API-Dump.json", api_dump)
 
         with open(self.rbx_version_file(), "w") as f:
